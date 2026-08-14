@@ -371,10 +371,15 @@ struct ContentView: View {
                                     NSWorkspace.shared.open(url)
                                 }
                             }) {
-                                Label("GitHub Profile", systemImage: "person.crop.circle.fill")
-                                    .font(.system(size: 10.5, weight: .bold))
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 6)
+                                HStack(spacing: 5) {
+                                    GitHubShape()
+                                        .fill(Color.purple)
+                                        .frame(width: 13, height: 13)
+                                    Text("GitHub Profile")
+                                        .font(.system(size: 10.5, weight: .bold))
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 6)
                             }
                             .buttonStyle(.bordered)
                             .tint(.purple)
@@ -474,4 +479,46 @@ struct VisualEffectView: NSViewRepresentable {
     }
 
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
+}
+
+// MARK: - Vector GitHub Logo Shape
+
+struct GitHubShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let w = rect.width
+        let h = rect.height
+        let sx = w / 24.0
+        let sy = h / 24.0
+
+        path.move(to: CGPoint(x: 12 * sx, y: 0 * sy))
+        path.addCurve(to: CGPoint(x: 0, y: 12 * sy), control1: CGPoint(x: 5.37 * sx, y: 0), control2: CGPoint(x: 0, y: 5.37 * sy))
+        path.addCurve(to: CGPoint(x: 8.205 * sx, y: 23.385 * sy), control1: CGPoint(x: 0, y: 17.31 * sy), control2: CGPoint(x: 3.435 * sx, y: 21.795 * sy))
+        path.addCurve(to: CGPoint(x: 9.03 * sx, y: 22.815 * sy), control1: CGPoint(x: 8.805 * sx, y: 23.49 * sy), control2: CGPoint(x: 9.03 * sx, y: 23.13 * sy))
+        path.addCurve(to: CGPoint(x: 9.015 * sx, y: 20.58 * sy), control1: CGPoint(x: 9.03 * sx, y: 22.53 * sy), control2: CGPoint(x: 9.015 * sx, y: 21.585 * sy))
+        path.addCurve(to: CGPoint(x: 4.98 * sx, y: 19.17 * sy), control1: CGPoint(x: 6 * sx, y: 21.135 * sy), control2: CGPoint(x: 5.22 * sx, y: 19.845 * sy))
+        path.addCurve(to: CGPoint(x: 3.75 * sx, y: 17.475 * sy), control1: CGPoint(x: 4.845 * sx, y: 18.825 * sy), control2: CGPoint(x: 4.26 * sx, y: 17.76 * sy))
+        path.addCurve(to: CGPoint(x: 3.735 * sx, y: 16.68 * sy), control1: CGPoint(x: 3.33 * sx, y: 17.25 * sy), control2: CGPoint(x: 2.73 * sx, y: 16.695 * sy))
+        path.addCurve(to: CGPoint(x: 5.58 * sx, y: 17.91 * sy), control1: CGPoint(x: 4.68 * sx, y: 16.665 * sy), control2: CGPoint(x: 5.355 * sx, y: 17.55 * sy))
+        path.addCurve(to: CGPoint(x: 9.075 * sx, y: 18.9 * sy), control1: CGPoint(x: 6.66 * sx, y: 19.725 * sy), control2: CGPoint(x: 8.385 * sx, y: 19.215 * sy))
+        path.addCurve(to: CGPoint(x: 9.84 * sx, y: 17.295 * sy), control1: CGPoint(x: 9.18 * sx, y: 18.12 * sy), control2: CGPoint(x: 9.495 * sx, y: 17.595 * sy))
+        path.addCurve(to: CGPoint(x: 4.365 * sx, y: 11.37 * sy), control1: CGPoint(x: 7.17 * sx, y: 16.995 * sy), control2: CGPoint(x: 4.365 * sx, y: 15.96 * sy))
+        path.addCurve(to: CGPoint(x: 5.595 * sx, y: 8.145 * sy), control1: CGPoint(x: 4.365 * sx, y: 10.065 * sy), control2: CGPoint(x: 4.83 * sx, y: 8.985 * sy))
+        path.addCurve(to: CGPoint(x: 5.715 * sx, y: 4.965 * sy), control1: CGPoint(x: 5.475 * sx, y: 7.845 * sy), control2: CGPoint(x: 5.055 * sx, y: 6.615 * sy))
+        path.addCurve(to: CGPoint(x: 9.015 * sx, y: 6.195 * sy), control1: CGPoint(x: 5.715 * sx, y: 4.965 * sy), control2: CGPoint(x: 6.72 * sx, y: 4.65 * sy))
+        path.addCurve(to: CGPoint(x: 12 * sx, y: 5.79 * sy), control1: CGPoint(x: 9.975 * sx, y: 5.925 * sy), control2: CGPoint(x: 10.995 * sx, y: 5.79 * sy))
+        path.addCurve(to: CGPoint(x: 14.985 * sx, y: 6.195 * sy), control1: CGPoint(x: 13.005 * sx, y: 5.79 * sy), control2: CGPoint(x: 14.025 * sx, y: 5.925 * sy))
+        path.addCurve(to: CGPoint(x: 18.285 * sx, y: 4.965 * sy), control1: CGPoint(x: 17.28 * sx, y: 4.65 * sy), control2: CGPoint(x: 18.285 * sx, y: 4.965 * sy))
+        path.addCurve(to: CGPoint(x: 18.405 * sx, y: 8.145 * sy), control1: CGPoint(x: 18.945 * sx, y: 6.615 * sy), control2: CGPoint(x: 18.525 * sx, y: 7.845 * sy))
+        path.addCurve(to: CGPoint(x: 19.635 * sx, y: 11.37 * sy), control1: CGPoint(x: 20.17 * sx, y: 8.985 * sy), control2: CGPoint(x: 19.635 * sx, y: 10.065 * sy))
+        path.addCurve(to: CGPoint(x: 14.16 * sx, y: 17.295 * sy), control1: CGPoint(x: 19.635 * sx, y: 15.96 * sy), control2: CGPoint(x: 16.83 * sx, y: 16.995 * sy))
+        path.addCurve(to: CGPoint(x: 14.97 * sx, y: 19.515 * sy), control1: CGPoint(x: 14.595 * sx, y: 17.67 * sy), control2: CGPoint(x: 14.97 * sx, y: 18.39 * sy))
+        path.addCurve(to: CGPoint(x: 14.955 * sx, y: 22.815 * sy), control1: CGPoint(x: 14.97 * sx, y: 21.12 * sy), control2: CGPoint(x: 14.955 * sx, y: 22.41 * sy))
+        path.addCurve(to: CGPoint(x: 15.78 * sx, y: 23.385 * sy), control1: CGPoint(x: 14.955 * sx, y: 23.13 * sy), control2: CGPoint(x: 15.18 * sx, y: 23.49 * sy))
+        path.addCurve(to: CGPoint(x: 24 * sx, y: 12 * sy), control1: CGPoint(x: 20.565 * sx, y: 21.795 * sy), control2: CGPoint(x: 24 * sx, y: 17.31 * sy))
+        path.addCurve(to: CGPoint(x: 12 * sx, y: 0), control1: CGPoint(x: 24 * sx, y: 5.37 * sy), control2: CGPoint(x: 18.63 * sx, y: 0))
+        path.closeSubpath()
+
+        return path
+    }
 }
