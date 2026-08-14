@@ -1,0 +1,14 @@
+# Xcode build artifacts
+build/
+DerivedData/
+
+# Xcode user-specific settings and workspace data
+*.xcuserdatad
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xsyncdestination
+*.xcuserstate
+
+# OS-specific files
+.DS_Store
