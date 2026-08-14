@@ -106,6 +106,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
 
         menu.addItem(NSMenuItem.separator())
+
+        let sendFeedbackItem = NSMenuItem(title: "Send Email Feedback...", action: #selector(openFeedbackEmail), keyEquivalent: "")
+        sendFeedbackItem.target = self
+        menu.addItem(sendFeedbackItem)
+
+        let openGitHubItem = NSMenuItem(title: "Visit GitHub Profile...", action: #selector(openGitHubProfile), keyEquivalent: "")
+        openGitHubItem.target = self
+        menu.addItem(openGitHubItem)
+
+        menu.addItem(NSMenuItem.separator())
         let quitItem = NSMenuItem(title: "Quit GlobalHaptics", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         menu.addItem(quitItem)
         
@@ -166,6 +176,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
                 NSLog("[GlobalHaptics] Failed to toggle launch at login: \(error)")
             }
             updateMenu()
+        }
+    }
+
+    @objc func openFeedbackEmail() {
+        let email = "shaurya.rathore.789@gmail.com"
+        let subject = "GlobalHaptics Feedback / Support"
+        if let url = URL(string: "mailto:\(email)?subject=\(subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") {
+            NSWorkspace.shared.open(url)
+        }
+    }
+
+    @objc func openGitHubProfile() {
+        if let url = URL(string: "https://github.com/rathoreshaurya") {
+            NSWorkspace.shared.open(url)
         }
     }
 

@@ -339,6 +339,54 @@ struct ContentView: View {
                             .shadow(color: Color.black.opacity(0.06), radius: 6, x: 0, y: 2)
                     )
 
+                    // MARK: - Support & Feedback Card
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            Image(systemName: "envelope.badge.shield.halfopen.fill")
+                                .font(.system(size: 13, weight: .bold))
+                                .foregroundColor(.blue)
+                            Text("Support & Developer Links")
+                                .font(.system(size: 12, weight: .bold, design: .rounded))
+                            Spacer()
+                        }
+
+                        HStack(spacing: 8) {
+                            Button(action: {
+                                let email = "shaurya.rathore.789@gmail.com"
+                                let subject = "GlobalHaptics Feedback / Support"
+                                if let url = URL(string: "mailto:\(email)?subject=\(subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") {
+                                    NSWorkspace.shared.open(url)
+                                }
+                            }) {
+                                Label("Send Email Feedback", systemImage: "envelope.fill")
+                                    .font(.system(size: 10.5, weight: .bold))
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 6)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.blue)
+
+                            Button(action: {
+                                if let url = URL(string: "https://github.com/rathoreshaurya") {
+                                    NSWorkspace.shared.open(url)
+                                }
+                            }) {
+                                Label("GitHub Profile", systemImage: "person.crop.circle.fill")
+                                    .font(.system(size: 10.5, weight: .bold))
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 6)
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(.purple)
+                        }
+                    }
+                    .padding(14)
+                    .background(
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            .fill(Color(NSColor.controlBackgroundColor).opacity(0.75))
+                            .shadow(color: Color.black.opacity(0.06), radius: 6, x: 0, y: 2)
+                    )
+
                     // MARK: - Quit App Section
                     Button(action: {
                         hapticEngine.quitApp()
